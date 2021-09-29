@@ -63,6 +63,10 @@ def list_to_grid(list):
     return grid
 
 
+#Need to complete move function 
+
+
+
 
 
 goalMatrix = list_to_grid(goalState)
@@ -76,6 +80,7 @@ def otherNodes(node):
     futurePath = []
     for i in range (0,4):
         futurePath.append(GridState)
+        #Need to complete otherNodes Function
 
 
 def dfs(initalNode):
@@ -89,6 +94,8 @@ def dfs(initalNode):
         if node.state == goalState:
             goalNode = node
             return stack
+            #complete dfs function 
+            
 
 
 
