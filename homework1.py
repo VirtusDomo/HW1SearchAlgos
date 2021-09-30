@@ -63,9 +63,154 @@ def list_to_grid(list):
     return grid
 
 
-#Need to complete move function 
+#This function is what swaps the positions of the list values depending on
+# the position of 0 (the blank tile).
+def move(state, direction):
+    #Make a safe copy of the Node state
+    copyState = state[:]
 
+    #find where 0 (aka the blank tile) is
+    index = copyState.index(0)
 
+    if(index == 0):
+        if(direction == 1):
+            return None 
+        if(direction == 2):
+            temp = copyState[0]
+            copyState[0] = copyState[3]
+            copyState[3] = temp
+        if(direction == 3):
+            return None
+        if(direction == 4):
+            temp = copyState[0]
+            copyState[0] = copyState[1]
+            copyState[1] = temp
+        return copyState
+    if(index == 1):
+        if(direction == 1):
+            return None 
+        if(direction == 2):
+            temp = copyState[1]
+            copyState[1] = copyState[4]
+            copyState[4] = temp
+        if(direction == 3):
+            temp = copyState[1]
+            copyState[1] = copyState[0]
+            copyState[0] = temp
+        if(direction == 4):
+            temp = copyState[1]
+            copyState[1] = copyState[2]
+            copyState[2] = temp
+        return copyState
+    if(index == 2):
+        if(direction == 1):
+            return None 
+        if(direction == 2):
+            temp = copyState[2]
+            copyState[2] = copyState[5]
+            copyState[5] = temp
+        if(direction == 3):
+            temp = copyState[2]
+            copyState[2] = copyState[1]
+            copyState[1] = temp
+        if(direction == 4):
+           return None
+        return copyState
+    if(index == 3):
+        if(direction == 1):
+            temp = copyState[3]
+            copyState[3] = copyState[0]
+            copyState[0] = temp
+        if(direction == 2):
+            temp = copyState[3]
+            copyState[3] = copyState[6]
+            copyState[6] = temp
+        if(direction == 3):
+            return None
+        if(direction == 4):
+            temp = copyState[3]
+            copyState[3] = copyState[4]
+            copyState[4] = temp
+        return copyState
+    if(index == 4):
+        if(direction == 1):
+            temp = copyState[4]
+            copyState[4] = copyState[1]
+            copyState[1] = temp
+        if(direction == 2):
+            temp = copyState[4]
+            copyState[4] = copyState[7]
+            copyState[7] = temp
+        if(direction == 3):
+            temp = copyState[4]
+            copyState[4] = copyState[3]
+            copyState[3] = temp
+        if(direction == 4):
+            temp = copyState[4]
+            copyState[4] = copyState[5]
+            copyState[5] = temp
+        return copyState
+    if(index == 5):
+        if(direction == 1):
+            temp = copyState[5]
+            copyState[5] = copyState[2]
+            copyState[2] = temp
+        if(direction == 2):
+            temp = copyState[5]
+            copyState[5] = copyState[8]
+            copyState[8] = temp
+        if(direction == 3):
+            temp = copyState[5]
+            copyState[5] = copyState[4]
+            copyState[4] = temp
+        if(direction == 4):
+            return None
+        return copyState
+    if(index == 6):
+        if(direction == 1):
+            temp = copyState[6]
+            copyState[6] = copyState[3]
+            copyState[3] = temp
+        if(direction == 2):
+            return None
+        if(direction == 3):
+            return None
+        if(direction == 4):
+            temp = copyState[6]
+            copyState[6] = copyState[7]
+            copyState[7] = temp
+        return copyState
+    if(index == 7):
+        if(direction == 1):
+            temp = copyState[7]
+            copyState[7] = copyState[4]
+            copyState[4] = temp
+        if(direction == 2):
+            return None
+        if(direction == 3):
+            temp = copyState[7]
+            copyState[7] = copyState[6]
+            copyState[6] = temp
+        if(direction == 4):
+            temp = copyState[7]
+            copyState[7] = copyState[8]
+            copyState[8] = temp
+        return copyState
+    if(index == 8):
+        if(direction == 1):
+            temp = copyState[8]
+            copyState[8] = copyState[5]
+            copyState[5] = temp
+        if(direction == 2):
+            return None
+        if(direction == 3):
+            temp = copyState[8]
+            copyState[8] = copyState[7]
+            copyState[7] = temp
+        if(direction == 4):
+            return None
+        return copyState
+#-----------------------------------------------------------------------------------
 
 
 
@@ -78,12 +223,18 @@ def otherNodes(node):
     nodesExpanded = nodesExpanded + 1
 
     futurePath = []
-    for i in range (0,4):
-        futurePath.append(GridState)
+    for i in range (1, 5):
+        futurePath.append(GridState(move(node.state, i), node, 1, node.depth + 1, node.cost+1, 0))
         #Need to complete otherNodes Function
+    nodes[]
+    for paths in futurePath:
+        if(paths.state != None):
+            nodes.append(paths)
+    return nodes
 
 
 def dfs(initalNode):
+
     global maxFrontier, goalNode, maxDepth
 
     visited = set()
@@ -94,8 +245,8 @@ def dfs(initalNode):
         if node.state == goalState:
             goalNode = node
             return stack
-            #complete dfs function 
-            
+        #reverse the
+        paths = reversed(otherNodes(node))
 
 
 
@@ -112,6 +263,8 @@ def astar2():
     return 0
 
 def main():
+
+    global goalNode
     #Parse command line statement for proper algorithm 
     
     parser = argparse.ArgumentParser()
@@ -143,7 +296,7 @@ def main():
     if(goalNode.depth > 10 and InputList != goalNode.state):
         return print("Sorry, we failed to find the solution within a depth of 10!")
     while InputList != goalNode.state:
-        if():
+        if(goalNode.move == 1):
             pass
 
 
