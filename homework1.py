@@ -226,7 +226,7 @@ def otherNodes(node):
     for i in range (1, 5):
         futurePath.append(GridState(move(node.state, i), node, 1, node.depth + 1, node.cost+1, 0))
         #Need to complete otherNodes Function
-    nodes[]
+    nodes = []
     for paths in futurePath:
         if(paths.state != None):
             nodes.append(paths)
